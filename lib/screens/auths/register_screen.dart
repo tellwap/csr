@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:csr/services/auths.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'login_screen.dart';
 
@@ -32,51 +34,50 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (!_formKey.currentState!.validate()) {
       return;
     }
-    // setState(() {
-    //   _isLoading = true;
-    // });
-    // final apiResponse = await Provider.of<Auth>(context, listen: false)
-    //     .register(
-    //         _textEditingControllerFirstName.text,
-    //         _textEditingControllerLastName.text,
-    //         _textEditingControllerEmail.text,
-    //         _textEditingControllerPhoneNumber.text,
-    //         _textEditingControllerPassword.text);
-    // setState(() {
-    //   _isLoading = false;
-    // });
-    // // var apiResponse = await register(_textEditingControllerName.text,_textEditingControllerName.text,_textEditingControllerName.text, _textEditingControllerEmail.text, _textEditingControllerPassword.text);
-    // if (apiResponse.error == null) {
-    //   _redirectToLogin();
-    //   //_redirectToHome(apiResponse.data as User);
-    //   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-    //     content:
-    //         Text('Account created successfully. You can now able to login..'),
-    //     duration: Duration(seconds: 10),
-    //   ));
-    // } else {
-    //   final responseError = jsonDecode(apiResponse.error as String);
-    //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    //     content: Column(
-    //       mainAxisSize: MainAxisSize.min,
-    //       children: [
-    //         responseError['phone_number'] == null
-    //             ? Container()
-    //             : Text(responseError['phone_number'].toString()),
-    //         responseError['email'] == null
-    //             ? Container()
-    //             : Text(responseError['email'].toString()),
-    //         responseError['password'] == null
-    //             ? Container()
-    //             : Text(responseError['password'].toString()),
-    //       ],
-    //     ),
-    //   ));
-    // }
+    setState(() {
+      _isLoading = true;
+    });
+    final apiResponse = await Provider.of<Auth>(context, listen: false)
+        .register(
+            _textEditingControllerFirstName.text,
+            _textEditingControllerLastName.text,
+            _textEditingControllerEmail.text,
+            _textEditingControllerPhoneNumber.text,
+            _textEditingControllerPassword.text);
+    setState(() {
+      _isLoading = false;
+    });
+    if (apiResponse.error == null) {
+      _redirectToLogin();
+      //_redirectToHome(apiResponse.data as User);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content:
+            Text('Account created successfully. You can now able to login..'),
+        duration: Duration(seconds: 10),
+      ));
+    } else {
+      final responseError = jsonDecode(apiResponse.error as String);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            responseError['phone_number'] == null
+                ? Container()
+                : Text(responseError['phone_number'].toString()),
+            responseError['email'] == null
+                ? Container()
+                : Text(responseError['email'].toString()),
+            responseError['password'] == null
+                ? Container()
+                : Text(responseError['password'].toString()),
+          ],
+        ),
+      ));
+    }
   }
 
   void _redirectToLogin() {
-    // Navigator.of(context).pushNamed(LoginScreen.routeName);
+     Navigator.of(context).pushNamed(LoginScreen.routeName);
   }
 
   @override
@@ -220,7 +221,5 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   void _openLoginPage(BuildContext context) {
      Navigator.pushReplacementNamed(context, LoginScreen.routeName);
-    // Navigator.push(
-    //     context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
 }

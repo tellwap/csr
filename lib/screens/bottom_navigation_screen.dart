@@ -1,5 +1,5 @@
 import 'package:csr/screens/account_screen.dart';
-import 'package:csr/screens/alert_screen.dart';
+import 'package:csr/screens/alerts/alert_screen.dart';
 import 'package:csr/screens/home_screen.dart';
 import 'package:csr/screens/list_screens.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +23,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           type: BottomNavigationBarType.fixed,
@@ -38,7 +36,6 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.account_circle_outlined), label: 'Me'),
           ],
-
           onTap: (int index) {
             setState(() {
               _currentIndex = index;
