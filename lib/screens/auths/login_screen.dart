@@ -49,8 +49,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    // _textEditingControllerAccount.text = 'chami@tellwap.com';
-    // _textEditingControllerPassword.text = '@tellwap';
+    _textEditingControllerAccount.text = 'chami@tellwap.com';
+    _textEditingControllerPassword.text = '@tellwap';
     super.initState();
   }
 

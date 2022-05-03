@@ -1,3 +1,5 @@
+import 'package:csr/screens/add_car_screen.dart';
+import 'package:csr/screens/add_insuarance_screen.dart';
 import 'package:csr/screens/alerts/alert_details_screen.dart';
 import 'package:csr/screens/alerts/alert_screen.dart';
 import 'package:csr/screens/auths/login_screen.dart';
@@ -6,6 +8,8 @@ import 'package:csr/screens/bottom_navigation_screen.dart';
 import 'package:csr/screens/list_details_screen.dart';
 import 'package:csr/screens/splash_screen.dart';
 import 'package:csr/services/auths.dart';
+import 'package:csr/services/cars.dart';
+import 'package:csr/services/insuarances.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +25,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => Auth()),
+        ChangeNotifierProvider(create: (ctx) => Auth()),
+        ChangeNotifierProvider(create: (ctx) => Cars()),
+        ChangeNotifierProvider(create: (ctx) => Insuarances()),
       ],
       child: Consumer<Auth>(
         builder: (context, auth, child) => MaterialApp(
@@ -45,7 +51,9 @@ class MyApp extends StatelessWidget {
             AlertDetailsScreen.routeName: (context) =>
                 const AlertDetailsScreen(),
             ListDetailsScreen.routeName: (context) => const ListDetailsScreen(),
-            AlertScreen.routeName: (context) => const AlertScreen()
+            AlertScreen.routeName: (context) => const AlertScreen(),
+            AddCarScreen.routeName: (ctx) => const AddCarScreen(),
+            AddInsuaranceScreen.routeName: (ctx) => const AddInsuaranceScreen(),
           },
         ),
       ),
