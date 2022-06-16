@@ -84,4 +84,29 @@ class Insuarances with ChangeNotifier {
     }
     return _apiResponse;
   }
+
+  Future<ApiResponse> deleteAllService() async {
+    ApiResponse _apiResponse = ApiResponse();
+
+    try {
+      Map<String, String> headers = {
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+        // 'Authorization': 'Bearer $_token'
+      };
+      var uri = Uri.parse(alertURL + '/delete');
+
+      final response = await http.get(uri, headers: headers);
+      print(jsonDecode(response.body));
+      if (response.statusCode == 200) {
+        print('succeffully deleted');
+      } else {
+        _apiResponse.error = somethingWentWrong;
+      }
+    } catch (error) {
+      print(error);
+      _apiResponse.error = serverError;
+    }
+    return _apiResponse;
+  }
 }

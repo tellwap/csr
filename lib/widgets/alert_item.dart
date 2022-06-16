@@ -1,6 +1,8 @@
 import 'package:csr/models/notification.dart';
 import 'package:csr/screens/alerts/alert_details_screen.dart';
+import 'package:csr/services/insuarances.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AlertItem extends StatelessWidget {
   final AlertNotification alertNotification;
@@ -19,6 +21,7 @@ class AlertItem extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -70,7 +73,15 @@ class AlertItem extends StatelessWidget {
                   Spacer(),
                   Icon(Icons.chevron_right_outlined)
                 ],
-              )
+              ),
+              ElevatedButton(
+                  onPressed: () async {
+                    await Provider.of<Insuarances>(context, listen: false)
+                        .deleteAllService();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Service confirmed')));
+                  },
+                  child: const Text('Confirm service'))
             ],
           ),
         ),

@@ -6,6 +6,7 @@ import 'package:csr/widgets/loading.dart';
 import 'package:csr/widgets/no_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class ListDetailsScreen extends StatelessWidget {
   const ListDetailsScreen({Key? key}) : super(key: key);
@@ -62,9 +63,47 @@ class ListDetailsScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Date'),
+                        const Text('Service Mileage'),
                         Text(
-                          '2022-04-27 11:12',
+                          '2000 Km',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    const Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Current Mileage'),
+                        Text(
+                          '${car.currentMileage} Km',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    const Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Mileage Remaining'),
+                        Text(
+                          '${(2000 - car.currentMileage)} Km',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    const Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Date Added'),
+                        Text(
+                          DateFormat.yMEd()
+                              .add_jms()
+                              .format(DateTime.parse(car.createdAt)),
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),

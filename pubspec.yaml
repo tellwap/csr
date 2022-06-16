@@ -44,6 +44,12 @@ dependencies:
   #offline storage library
   shared_preferences: ^2.0.6
 
+  intl: ^0.17.0
+
+  workmanager: ^0.4.0
+
+  flutter_local_notifications: ^6.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
