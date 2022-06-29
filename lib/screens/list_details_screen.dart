@@ -90,6 +90,30 @@ class ListDetailsScreen extends StatelessWidget {
                         const Text('Mileage Remaining'),
                         Text(
                           '${(2000 - car.currentMileage)} Km',
+                          style: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    const Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text('Last Service date'),
+                        Text(
+                          'Mon 22/05/2022 ',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    const Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text('Max. Service date'),
+                        Text(
+                          'Mon 22/09/2022',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),

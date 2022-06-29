@@ -90,14 +90,14 @@ class HomeScreen extends StatelessWidget {
                         child: Column(
                           children: const [
                             Text(
-                              'Insuarance Alert',
+                              'Insurance Alert',
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
                               height: 10,
                             ),
-                            Text('Insuarance expired alert')
+                            Text('Insurance expired alert')
                           ],
                         ),
                       ),
@@ -112,8 +112,8 @@ class HomeScreen extends StatelessWidget {
                 FlutterLocalNotificationsPlugin flp =
                     FlutterLocalNotificationsPlugin();
                 var android =
-                    AndroidInitializationSettings('@mipmap/ic_launcher');
-                var ios = IOSInitializationSettings();
+                    const AndroidInitializationSettings('@mipmap/ic_launcher');
+                var ios = const IOSInitializationSettings();
                 var initSettings =
                     InitializationSettings(android: android, iOS: ios);
                 flp.initialize(initSettings);
