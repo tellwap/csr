@@ -25,8 +25,7 @@ void showNotification(v, flp) async {
       priority: Priority.high, importance: Importance.max);
   var ios = const IOSNotificationDetails();
   var platform = NotificationDetails(android: android, iOS: ios);
-  await flp.show(0, 'Example of notification', '$v', platform,
-      payload: 'VIS \n $v');
+  await flp.show(0, 'Service Alert', '$v', platform, payload: 'VIS \n $v');
 }
 
 void main() async {

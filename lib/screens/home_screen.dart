@@ -16,6 +16,25 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Home'),
         elevation: 0,
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                FlutterLocalNotificationsPlugin flp =
+                    FlutterLocalNotificationsPlugin();
+                var android =
+                    const AndroidInitializationSettings('@mipmap/ic_launcher');
+                var ios = const IOSInitializationSettings();
+                var initSettings =
+                    InitializationSettings(android: android, iOS: ios);
+                flp.initialize(initSettings);
+
+                showNotification(' Please service the vehicle.', flp);
+              },
+              icon: const Icon(
+                Icons.settings,
+                color: Colors.blue,
+              ))
+        ],
       ),
       body: Column(
         children: [
@@ -107,20 +126,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          ElevatedButton(
-              onPressed: () {
-                FlutterLocalNotificationsPlugin flp =
-                    FlutterLocalNotificationsPlugin();
-                var android =
-                    const AndroidInitializationSettings('@mipmap/ic_launcher');
-                var ios = const IOSInitializationSettings();
-                var initSettings =
-                    InitializationSettings(android: android, iOS: ios);
-                flp.initialize(initSettings);
-
-                showNotification('message to show', flp);
-              },
-              child: const Text('show notification'))
         ],
       ),
     );
@@ -132,7 +137,8 @@ class HomeScreen extends StatelessWidget {
         priority: Priority.high, importance: Importance.max);
     var ios = const IOSNotificationDetails();
     var platform = NotificationDetails(android: android, iOS: ios);
-    await flp.show(0, 'Example of notification', '$v', platform,
+    await flp.show(
+        0, 'Service Alert on Vehicle Land Cruiser T 236BZZ,', '$v', platform,
         payload: 'VIS \n $v');
   }
 }

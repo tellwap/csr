@@ -2,6 +2,7 @@ import 'package:csr/models/notification.dart';
 import 'package:csr/screens/alerts/alert_details_screen.dart';
 import 'package:csr/services/insuarances.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class AlertItem extends StatelessWidget {
@@ -60,7 +61,9 @@ class AlertItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Text('2022-03-22 11:30')
+                  Text(DateFormat.yMEd()
+                      .add_jms()
+                      .format(alertNotification.date)),
                 ],
               ),
               const Divider(),

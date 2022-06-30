@@ -65,7 +65,7 @@ class ListDetailsScreen extends StatelessWidget {
                       children: [
                         const Text('Service Mileage'),
                         Text(
-                          '2000 Km',
+                          '10000 Km',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
@@ -89,7 +89,7 @@ class ListDetailsScreen extends StatelessWidget {
                       children: [
                         const Text('Mileage Remaining'),
                         Text(
-                          '${(2000 - car.currentMileage)} Km',
+                          '${(10000 - car.currentMileage)} Km',
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),

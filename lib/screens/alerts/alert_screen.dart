@@ -19,14 +19,14 @@ class AlertScreen extends StatelessWidget {
       print(alert.distance);
     }
 
-    int totalAlert = (totalDistance / 200).floor();
+    int totalAlert = (totalDistance / 10000).floor();
     for (int i = 0; i < totalAlert; ++i) {
       notifications.add(
         AlertNotification(
-          title: 'Service alert',
-          item: 'Landcruiser',
-          itemNo: 'TZ-234-454',
-        ),
+            title: 'Service alert',
+            item: 'Land cruiser',
+            itemNo: 'T 236 BZZ',
+            date: DateTime.now().add(Duration(hours: (24 * i)))),
       );
     }
 
